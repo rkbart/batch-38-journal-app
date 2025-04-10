@@ -1,0 +1,11 @@
+
+<%= form_with(model: @category, local: true, html: { class: "category-form" }) do |form| %>
+  <div class="field">
+    <%= form.label "Category Name" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

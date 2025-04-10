@@ -1,0 +1,23 @@
+
+<%= form_with(model: [ @category, @task ], local: true, html: { class: "task-form" }) do |form| %>
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <!-- <div class="field">
+    <%# <%= form.label :due_date %> %>
+    <%# <%= form.text_field :due_date %> %>
+  </div> -->
+
+   <div class="field">
+    <%= form.label :due_date, "Due Date" %><br>
+    <%= form.date_field :due_date, min: Date.today %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+     <%= link_to "Back", category_path(@task.category), class: "btn" %>
+  </div>
+ 
+<% end %>
