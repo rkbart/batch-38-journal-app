@@ -1,0 +1,36 @@
+<div class = "today">
+	<h1>📌 Available Tasks</h1>
+	
+	<h2>Today's Tasks</h2>
+	<% if @tasks_today.any? %>
+			<ul>
+			<% @tasks_today.each do |task| %>
+					<li>
+					<%= link_to category_task_path(task.category, task) do%>
+							✅ <%= task.description %> (from <%= task.category.name %>)
+					<%end%>
+					</li>
+			<% end %>
+			</ul>
+	<% else %>
+			<p>No tasks due today 🎉</p>
+	<% end %>
+
+	<h2>Upcoming Tasks</h2>
+	<% if @upcoming_tasks.any? %>
+			<ul>
+			<% @upcoming_tasks.each do |task| %>
+					<li>
+					<%= link_to category_task_path(task.category, task) do%>
+							✅ <%= task.description %> (from <%= task.category.name %>)
+					<%end%>
+					</li>
+			<% end %>
+			</ul>
+	<% else %>
+			<p>No upcoming tasks 🎉</p>
+	<% end %>
+
+	<%= link_to '📋 Add New Task', new_category_task_path(1), class: "btn" %>
+  <%= link_to '⬅️ Back to Categories', categories_path, class: "btn" %>
+</div>

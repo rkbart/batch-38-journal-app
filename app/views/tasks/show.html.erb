@@ -1,10 +1,19 @@
-<h1><%= @task.description %></h1>
-<h2>Due Date: <%= @task.due_date %></h2>
+<div class = "task-show-container">
+	<div class = "task-show-title">
+		<h1>📌<%= @task.description %></h1> 
+		<div class = "task-show-actions"> 
+			<%= link_to "📝", edit_category_task_path(@task.category, @task), class: "edit-btn" %>
+		</div>
+		<div class = "task-show-actions"> 	
+			<%= link_to "⛔", category_task_path(@task.category, @task), 
+			data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
+			class: "delete-btn" %>
+		</div>
+	</div>
 
-<%= link_to "Edit Task", edit_category_task_path(@task.category, @task), class: "btn" %>
+	<h2>📆Due Date: <%= @task.due_date %></h2>
+	<h2>🗂️Category: <%= @task.category.name %></h2>
 
-<%= link_to "Delete Task", category_task_path(@task.category, @task), 
-data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-class: "btn" %>
-
-<%= link_to "Back to Category", category_path(@task.category), class: "btn" %>
+	<%= link_to '⬅️ View Category', category_path(@task.category), class: "btn" %>
+	<%= link_to '⬅️🏠 Back to Home', categories_path, class: "btn" %>
+</div>

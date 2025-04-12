@@ -1,19 +1,23 @@
-<h1><%= @category.name %></h1>
+<div class = "categories-show-container">
+  <h1><%= @category.name %>🗂️</h1>
+  
+  <div class = "tasks-title">
+    <h2>Tasks🗒️</h2>
+  </div>
 
-<h2>Tasks</h2>
+  <% if @tasks.any? %>
+    
+      <% @tasks.each do |task| %>
+        <div class = "task">
+          <p>📌<%= link_to task.description.titleize, category_task_path(@category, task) %></p> 
+          <p style = "font-weight: bold;">📆 <%= task.due_date.strftime("%B %d, %Y") %></p> 
+        </div>
+      <% end %>
+    
+  <% else %>
+    <p>No tasks in this category yet.</p>
+  <% end %>
 
-<% if @tasks.any? %>
-  <ul>
-    <% @tasks.each do |task| %>
-      <li>
-        <p><%= link_to task.description, category_task_path(@category, task) %></p> 
-        <p><%= task.due_date %></p> 
-      </li>
-    <% end %>
-  </ul>
-<% else %>
-  <p>No tasks in this category yet.</p>
-<% end %>
-
-<%= link_to 'Add New Task', new_category_task_path(@category), class: "btn" %>
-<%= link_to 'Back to Categories', categories_path, class: "btn" %>
+  <%= link_to '📋 Add New Task', new_category_task_path(@category), class: "btn" %>
+  <%= link_to '⬅️ Back to Categories', categories_path, class: "btn" %>
+</div>

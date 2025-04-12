@@ -1,0 +1,93 @@
+/* Apply to the body for basic centering and background */
+.login {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: -50px;
+  }
+  
+  body::-webkit-scrollbar {
+    display: none; 
+  }
+  /* Container for the login form */
+  .login form {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  /* Headline */
+  .login h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: #333;
+  }
+  
+  /* Field containers */
+  .login .field {
+    margin-bottom: 1rem;
+  }
+  
+  .login .field label {
+    display: block;
+    font-weight: 600;
+    /* margin-bottom: 0.5rem; */
+    color: #333;
+  }
+  
+  .login .field input[type="email"],
+  .login .field input[type="password"],
+  .login .field input[type="text"] {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+  }
+  
+  /* Remember me checkbox */
+  .login .field input[type="checkbox"] {
+    margin-right: 0.5rem;
+  }
+  
+  /* Submit button */
+  .login .actions input[type="submit"] {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .login .actions input[type="submit"]:hover {
+    background-color: #357bd8;
+  }
+  
+  /* Links under the form */
+  .devise-links {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  .devise-links a {
+    color: #4a90e2;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  
+  .devise-links a:hover {
+    text-decoration: underline;
+  }
+  

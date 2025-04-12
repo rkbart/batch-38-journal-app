@@ -1,0 +1,29 @@
+.task-show-container {
+    margin-left: 1.5rem;
+}
+
+.task-show-container h2{
+    margin-left: 1rem;
+}
+
+.task-show-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    user-select: none;
+    gap: .5rem;
+    margin-bottom: -1rem;
+}
+
+.task-show-actions {
+    font-size:20px;
+}
+
+.task-show-actions:hover {
+    transform: scale(1.1);
+}
+
+.task-show-actions a {
+    text-decoration: none;
+}
+

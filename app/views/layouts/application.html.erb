@@ -22,7 +22,7 @@
     <%= javascript_importmap_tags %>
 
     <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Lora&display=swap", media: "all" %>
-
+    
   </head>
 
 <body>
@@ -38,7 +38,7 @@
     <% if user_signed_in? %>
       <div class="user-info">
         <h3>Welcome, <%= current_user.email %></h3>
-        <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn" %>
+        <%= link_to "⏻Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn" %>
       </div>
     <% end %>
   </div>

@@ -1,8 +1,13 @@
 class TasksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_category
+  before_action :set_category, except: [ :index ]
   before_action :set_task, only: [ :show, :edit, :update, :destroy ]
 
+  def index
+    @tasks = current_user.tasks.includes(:category)
+    @tasks_today = @tasks.where(due_date: Date.today)
+    @upcoming_tasks = @tasks.where("due_date > ?", Date.today)
+  end
   def show; end
 
   def new
@@ -48,6 +53,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:description, :due_date)
+    params.require(:task).permit(:description, :due_date, :category_id)
   end
 end

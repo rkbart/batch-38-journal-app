@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   resources :categories do
     resources :tasks
   end
+  
+  get "tasks", to: "tasks#index", as: "tasks"
 
   authenticated :user do
     root "categories#index", as: :authenticated_root

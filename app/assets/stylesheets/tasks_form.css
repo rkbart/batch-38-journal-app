@@ -1,4 +1,4 @@
-.category-form {
+.task-form {
     background-color: #f9f9f9;
     padding: 1.5rem;
     border-radius: 10px;
@@ -6,32 +6,38 @@
     max-width: 300px;
   }
   
-  .category-form .field {
+  .task-form .field {
     margin-bottom: 1rem;
   }
   
-  .category-form label {
+  .task-form label {
     font-weight: bold;
     display: block;
     margin-bottom: 0.5rem;
   }
   
-  .category-form input[type="text"] {
+  .task-form input[type="text"],
+  .task-form input[type="date"] {
     padding: 0.5rem;
     border: 1px solid #ccc;
     width: 95%;
   }
 
-  .category-form .actions .btn {
+  .task-form input[type="date"] {
+    cursor: pointer;
+  }
+  
+  .task-form .actions .btn {
     color: white;
     background-color: gray;
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
     display: inline-block;
-    margin-top: 1rem;
+    margin-top: 0;
+    margin-left: 0;
     border: none;
   }
-  .category-form .actions .btn:hover {
+  .task-form .actions .btn:hover {
     background-color: rgb(81, 81, 81);
   }

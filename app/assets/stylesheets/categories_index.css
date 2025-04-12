@@ -1,0 +1,81 @@
+.categories-title {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
+	user-select: none;
+	margin-left: 1rem;
+}
+
+.categories-title a {
+	font-style: italic;
+	text-decoration: none;
+	color: black;
+	margin-top: -1rem;
+	margin-bottom: 1rem;
+
+}
+
+.categories-title a:hover {
+	color: rgb(81, 81, 81);
+}
+
+.categories-container {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	user-select: none;
+	border-bottom: 1px solid hsl(0, 0%, 80%);
+	margin-left: 1rem;
+	margin-top: -1rem;
+	width: 98%
+}
+.categories-container a {
+	text-decoration: none;
+	color: black
+}
+
+.categories-container a:hover {
+	color: rgb(81, 81, 81);
+}
+
+.categories-container h2 {
+	cursor: pointer;
+	margin-left: .5rem;
+}
+
+.edit-icon, .delete-icon {
+	cursor: pointer;
+	padding: 0;
+	margin-left: 6px;
+}
+
+.edit-icon a, .delete-icon a {
+  text-decoration: none;
+}
+.delete-icon:hover, .edit-icon:hover {
+  transform: scale(1.1);
+}
+
+.new-category {
+  margin-left: 1rem;
+}
+
+.today {
+	margin-left: 1rem;
+}
+
+.today ul li {
+  list-style: none;
+  margin-bottom: .5rem;
+  font-size: 18px;
+}
+
+.today a {
+  text-decoration: none;
+  color: black
+}
+
+.today a:hover {
+	color: rgb(81, 81, 81);
+}
