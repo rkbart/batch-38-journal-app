@@ -1,33 +1,35 @@
 <div class = "categories-show-container">
   <h1><%= @category.name %> <i class="fa-solid fa-folder-open"></i></h1>
   
-  <div class = "tasks-title">
-    <h2>Tasks <i class="fa-solid fa-list-check"></i></h2>
-  </div>
+  <div class = "categories-show-tasks-container">
+    <div class = "tasks-title">
+      <h2>Tasks <i class="fa-solid fa-list-check"></i></h2>
+    </div>
 
-  <% if @tasks.any? %>
-    
+    <% if @tasks.any? %>
       <% @tasks.each do |task| %>
         <div class = "task">
-          <p>
+          <p title = "view task">
             <i class="fa-solid fa-thumbtack"></i>&nbsp;
             <%= link_to task.description.titleize, category_task_path(@category, task) %>
           </p> 
-          <p style = "font-weight: bold;">
+          <p style = "font-weight: bold;" title = "due date">
             <i class="fa-solid fa-calendar-days"></i>&nbsp; 
             <%= task.due_date.strftime("%B %d, %Y") %>
           </p> 
         </div>
       <% end %>
-    
-  <% else %>
-    <p>No tasks in this category yet.</p>
-  <% end %>
+    <% else %>
+      <p>No tasks in this category yet.</p>
+    <% end %>
+  </div>
 
-  <%= link_to new_category_task_path(@category), class: "btn" do %>
-    <i class="fa-solid fa-clipboard-check"></i> &nbsp;Add New Task
-  <% end %>
-  <%= link_to categories_path, class: "btn" do%>
-    <i class="fa-solid fa-arrow-left"></i> &nbsp;Back to Categories
-  <%end%>
+  <div class = "categories-show-actions">
+    <%= link_to new_category_task_path(@category), class: "btn" do %>
+      <i class="fa-solid fa-clipboard-check"></i> &nbsp;Add New Task
+    <% end %>
+    <%= link_to categories_path, class: "btn" do%>
+      <i class="fa-solid fa-arrow-left"></i> &nbsp;Back to Categories
+    <%end%>
+  </div>
 </div>

@@ -36,7 +36,8 @@ class TasksController < ApplicationController
       redirect_to category_path(@task.category)
       flash[:notice] = "Task updated successfully"
     else
-      render :edit
+      flash[:alert] = "Unable to save task"
+      render :edit, status: :unprocessable_entity
     end
   end
 

@@ -1,27 +1,30 @@
-<div class = "categories-title">
-  <h1>Categories <i class="fa-solid fa-briefcase"></i></h1>
-  <%= link_to tasks_path do %>
-    <i class="fa-solid fa-list-check"></i> View All Tasks
-  <%end%>
-</div>
-
-<% @categories.each do |category| %>
-  <div class = "categories-container">
-    <h2>
-      <i class="fa-solid fa-folder"></i> 
-      <%= link_to category.name, category %> (<%= category.tasks.count %>)
-    </h2>
-    
-    <% unless category.name == "Uncategorized" %>
-      <%= link_to edit_category_path(category), class: "edit-icon" do %>
-        <i class="fa-solid fa-pen-to-square"></i>
-      <%end%>
-    <%end%>
+<div class="categories-index-container"> 
+  <div class="categories-title">
+    <h1>Categories <i class="fa-solid fa-briefcase"></i></h1>
+    <%= link_to tasks_path, class: "view-all btn" do %>
+      <i class="fa-solid fa-list-check"></i> View All Tasks
+    <% end %>
   </div>
-<%end%>
 
-<%= link_to new_category_path, class: "btn new-category" do %>
-  <span>
-    <i class="fa-solid fa-folder-plus"></i> &nbsp;Add Category
-  </span>
-<%end%>
+  <% if @categories.any? %>
+    <% @categories.each do |category| %>
+      <div class="categories-container">
+        <h2>
+          <i class="fa-solid fa-folder"></i> 
+          <%= link_to category.name, category %> (<%= category.tasks.count %>)
+        </h2>
+        <%= link_to edit_category_path(category), class: "edit-icon" do %>
+          <i class="fa-solid fa-pen-to-square"></i>
+        <% end %>
+      </div>
+    <% end %>
+  <% else %>
+    <h3 style="text-align: center; font-style: italic;">No categories yet.</h3>
+  <% end %>
+
+  <%= link_to new_category_path, title: "Add Category", class: "new-category" do %>
+    <span>
+      <i class="fa-solid fa-folder-plus"></i> &nbsp;Create a Category
+    </span>
+  <% end %>
+</div>

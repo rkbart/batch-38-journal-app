@@ -34,7 +34,8 @@ class CategoriesController < ApplicationController
       redirect_to @category
       flash[:notice] = "Category updated successfully"
     else
-      render :edit
+      flash[:alert] = "Unable to save category"
+      render :edit, status: :unprocessable_entity
     end
   end
 

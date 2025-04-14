@@ -1,52 +1,54 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= content_for(:title) || "Journal App" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="en">
+<head>
+  <title><%= content_for(:title) || "Journal App Batch 38" %></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
 
-    <%= yield :head %>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
+  <%= yield :head %>
 
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
+  <%# Uncomment if using PWA manifest %>
+  <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
+  <link rel="icon" href="/icon.png" type="image/png">
+  <link rel="icon" href="/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/icon.png">
 
-    <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Lora&display=swap", media: "all" %>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    
-  </head>
+  <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+  <%= stylesheet_link_tag "https://fonts.googleapis.com/css2?family=Inter&display=swap", media: "all" %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
 
 <body>
-  <div class="header">
-    <div class="flash-container">
-      <% flash.each do |type, msg| %>
-        <div class="flash-message">
-          <p><%= msg %></p>
-        </div>
-      <% end %>
-    </div>
-
+  <header class="header">
     <% if user_signed_in? %>
       <div class="user-info">
         <h3>Welcome, <%= current_user.email %></h3>
         <%= link_to destroy_user_session_path, data: { turbo_method: :delete }, class: "btn" do %>
-          <i class="fa-solid fa-power-off"></i> &nbsp;Logout
-        <%end%>
+          <i class="fa-solid fa-power-off"></i>&nbsp;Logout
+        <% end %>
       </div>
     <% end %>
-  </div>
 
-  <%= yield %>
+    <% if flash.any? %>
+      <div class="flash-container">
+        <% flash.each do |type, msg| %>
+          <div class="flash-message <%= type %> fade-in">
+            <p><%= msg %></p>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </header>
+
+  <main>
+    <%= yield %>
+  </main>
 </body>
-
 </html>

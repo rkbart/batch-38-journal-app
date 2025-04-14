@@ -8,9 +8,8 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     @category = categories(:one)
     @task = tasks(:one)
-		@task_today_1 = Task.create!(description: "Do something", due_date: Date.today, category: @category)
-    @task_today_2 = Task.create!(description: "Another thing", due_date: Date.today, category: @category)
-  end
+    @task2 = tasks(:two)
+	end
 
   # User Story #1 - Create a Category
 	test "should create category with user" do
@@ -62,10 +61,10 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
 
 	#User Story #8 - View Tasks Today
 	test "should show tasks today" do
-		get categories_path
+		get tasks_path
 
-    assert_includes  @response.body, @task_today_1.description
-    assert_includes  @response.body, @task_today_2.description
+    assert_includes @response.body, @task.description
+    assert_includes @response.body, @task2.description
 	end
 
 	#User Story #9 - Create User

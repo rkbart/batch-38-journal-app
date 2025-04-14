@@ -1,30 +1,24 @@
-
-<%= form_with(model: [ @category, @task ], local: true, html: { class: "task-form" }) do |form| %>
+<%= form_with(model: [ @category, @task ], local: true, html: { class: "category-form" }) do |form| %>
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.label :description, class: "form-label" %>
+    <%= form.text_field :description, class: "form-input" %>
   </div>
   
   <div class="field">
-    <%= form.label :due_date, "Due Date" %>
-    <%= form.date_field :due_date, min: Date.today, value: @task.due_date %>
+    <%= form.label :due_date, "Due Date", class: "form-label" %>
+    <%= form.date_field :due_date, min: Date.today, value: @task.due_date, class: "form-input" %>
   </div>
 
   <div class="field">
-    <%= form.label :category_id, "Select Category" %>
+    <%= form.label :category_id, "Select Category", class: "form-label" %>
     <%= form.collection_select :category_id, current_user.categories, 
-                               :id, :name, { selected: task.category_id, prompt: "Select a Category" }, 
-                               class: "category-dropdown" %>
+                             :id, :name, { selected: @task.category_id, prompt: "Select a Category" }, 
+                             class: "form-input form-select" %>
   </div>
 
   <div class="actions">
     <%= button_tag(type: "submit", class: "btn") do %>
       <i class="fa-solid fa-floppy-disk"></i> &nbsp;Save Task
     <% end %>
-
   </div>
- 
 <% end %>
-
-
-

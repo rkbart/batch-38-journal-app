@@ -1,41 +1,126 @@
-
 .today {
-	margin-left: 1rem;
+  max-width: 600px;
+  width: 90%;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e0e0e0;
+}
+
+.today h1 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.today h1 i {
+  color: #f39c12;
+}
+
+.today h2 {
+  font-size: 1.3rem;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.today ul {
+  padding: 0;
+  margin: 1rem 0;
 }
 
 .today ul li {
   list-style: none;
-  margin-bottom: .5rem;
-  font-size: 18px;
-  margin-left: -1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .today ul li a {
   text-decoration: none;
-  color: black;
-  transition: all .2s ease-in-out;
+  color: #2c3e50;
+  font-weight: 500;
+  transition: color 0.3s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .today ul li a:hover {
-  text-decoration: underline hsl(0, 0%, 20%);
+  color: #3498db;
 }
 
 .today p {
-    margin-left: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  color: #7f8c8d;
+  font-style: italic;
 }
 
-.today .tasks-btn a {
-  margin-left: 10px;
-  text-decoration: none;
-  color: whitesmoke;
-  background-color: black;
-  padding: 6px 12px;
+.tasks-btn {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.tasks-btn a {
+  background-color: #2ecc71;
+  color: white;
+  padding: 0.75rem 1.25rem;
   border-radius: 4px;
-  cursor: pointer;
-  display: inline-block;
-  margin-top: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
-.today .tasks-btn a:hover {
-  background-color: hsl(0, 0%, 20%);
+.tasks-btn a:hover {
+  background-color: #27ae60;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(46, 204, 113, 0.3);
+}
+
+/* Back button style */
+.tasks-btn a:last-child {
+  background-color: #f8f9fa;
+  color: #34495e;
+  border: 1px solid #ddd;
+}
+
+.tasks-btn a:last-child:hover {
+  background-color: #e9ecef;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .today {
+    width: 100%;
+    margin: 1rem 0;
+    padding: 1.5rem;
+    border: none;
+    box-shadow: none;
+  }
+
+  .tasks-btn {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .tasks-btn a {
+    width: 100%;
+    justify-content: center;
+  }
 }

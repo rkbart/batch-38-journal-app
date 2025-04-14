@@ -1,93 +1,126 @@
-/* Apply to the body for basic centering and background */
+/* Centering & Page Background */
 .login {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #f0f2f5;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: -50px;
-  }
-  
-  body::-webkit-scrollbar {
-    display: none; 
-  }
-  /* Container for the login form */
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f2f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 100vh; */
+  padding: 2rem;
+}
+
+/* Hide scrollbar (for WebKit browsers) */
+body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Login/Signup Form Container */
+.login form {
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 400px;
+  /* margin-top: 1rem; */
+}
+
+/* Form Headline */
+.login h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  color: #2c3e50;
+}
+
+/* Field Wrappers */
+.field {
+  margin-bottom: 1rem;
+}
+
+.field label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+
+.field input[type="email"],
+.field input[type="password"],
+.field input[type="text"] {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.field input:focus {
+  border-color: #4a90e2;
+  outline: none;
+}
+
+/* Checkbox (if any) */
+.field input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+/* Submit Button */
+.actions input[type="submit"] {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s;
+}
+
+.actions input[type="submit"]:hover {
+  background-color: #357bd8;
+  transform: translateY(-1px);
+}
+
+/* Devise Links Below the Form */
+.devise-links {
+  text-align: center;
+  margin-top: 1.25rem;
+}
+
+.devise-links a {
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: text-decoration 0.2s;
+}
+
+.devise-links a:hover {
+  text-decoration: underline;
+}
+
+/* Password Hint (Signup) */
+.login em {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 480px) {
   .login form {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
+    padding: 1.5rem;
   }
-  
-  /* Headline */
+
   .login h2 {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #333;
+    font-size: 1.3rem;
   }
-  
-  /* Field containers */
-  .login .field {
-    margin-bottom: 1rem;
+
+  .actions input[type="submit"] {
+    font-size: 0.95rem;
   }
-  
-  .login .field label {
-    display: block;
-    font-weight: 600;
-    /* margin-bottom: 0.5rem; */
-    color: #333;
-  }
-  
-  .login .field input[type="email"],
-  .login .field input[type="password"],
-  .login .field input[type="text"] {
-    width: 100%;
-    padding: 0.6rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 1rem;
-    box-sizing: border-box;
-  }
-  
-  /* Remember me checkbox */
-  .login .field input[type="checkbox"] {
-    margin-right: 0.5rem;
-  }
-  
-  /* Submit button */
-  .login .actions input[type="submit"] {
-    width: 100%;
-    padding: 0.75rem;
-    background-color: #4a90e2;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-  }
-  
-  .login .actions input[type="submit"]:hover {
-    background-color: #357bd8;
-  }
-  
-  /* Links under the form */
-  .devise-links {
-    text-align: center;
-    margin-top: 1rem;
-  }
-  
-  .devise-links a {
-    color: #4a90e2;
-    text-decoration: none;
-    font-size: 0.9rem;
-  }
-  
-  .devise-links a:hover {
-    text-decoration: underline;
-  }
-  
+}
