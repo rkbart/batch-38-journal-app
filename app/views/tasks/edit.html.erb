@@ -11,4 +11,15 @@
       </div>
     <% end %>
   <%= render "form", task: @task %>
+  
+  <div class = "task-edit-actions">
+    <%= link_to session[:return_to] || tasks_path, class: "btn" do %>
+      <i class="fa-solid fa-arrow-left"></i> &nbsp; Back
+    <%end%>
+    <%= link_to category_task_path(@task.category, @task), 
+			data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
+			class: "btn" do %>
+				<i class="fa-solid fa-trash"></i>&nbsp; Delete Task
+		<%end%>
+	</div>
 </div>

@@ -1,47 +1,48 @@
 .categories-show-container {
-    margin-left: 1.5rem;
-    display: block;
-    width: 97%;
+	margin-left: 1.5rem;
+	display: block;
+	width: 97%;
 }
 
 .categories-show-container h1 {
-    margin-bottom: -.5rem;
+	margin-bottom: -.5rem;
 }
 
 .tasks-title {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    user-select: none;
-    margin-bottom: -1rem;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	user-select: none;
+	margin-bottom: -1rem;
 }
 
 .add-task-icon {
-    cursor: pointer;
-    width: 1.5rem;
-    height: 1.5rem;
-    padding: 0;
-    margin-left: 6px;
-    border: none;
+	cursor: pointer;
+	width: 1.5rem;
+	height: 1.5rem;
+	padding: 0;
+	margin-left: 6px;
+	border: none;
 }
 
 .add-task-icon:hover {  
-    transform: scale(1.1);
+	transform: scale(1.1);
 }
 
 .task {
-    margin-left: 1.5rem;
-    border-bottom: 1px solid hsl(0, 0%, 80%);
+	margin-left: 1.5rem;
+	border-bottom: 1px solid hsl(0, 0%, 80%);
 }
 
 .task a {
-    text-decoration: none;
-    color: black;
-    cursor: pointer;
-    font-weight: bold;
+	text-decoration: none;
+	color: black;
+	cursor: pointer;
+	font-weight: bold;
+	transition: all .3s ease-in-out;
 }
 
 .task a:hover {
-    text-decoration: underline;
+	color: hsl(0, 0%, 50%);   
 }
 

@@ -1,4 +1,14 @@
 <div class = "edit-category-container">
     <h1>Edit Category</h1>
     <%= render "form", category: @category %>
+     <div class = "category-edit-actions">
+    <%= link_to categories_path, class: "btn" do %>
+      <i class="fa-solid fa-arrow-left"></i> &nbsp; Back
+    <%end%>
+    <%= link_to category_path(@category), 
+			data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
+			class: "btn" do %>
+				<i class="fa-solid fa-trash"></i>&nbsp; Delete Category
+		<%end%>
+	</div>
 </div>

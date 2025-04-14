@@ -7,7 +7,7 @@
   
   <div class="field">
     <%= form.label :due_date, "Due Date" %>
-    <%= form.date_field :due_date, min: Date.today, value: Date.today %>
+    <%= form.date_field :due_date, min: Date.today, value: @task.due_date %>
   </div>
 
   <div class="field">
@@ -18,10 +18,13 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "💾 Save Task", class: "btn"%>
+    <%= button_tag(type: "submit", class: "btn") do %>
+      <i class="fa-solid fa-floppy-disk"></i> &nbsp;Save Task
+    <% end %>
+
   </div>
  
 <% end %>
 
-<%= link_to '⬅️ Back', request.referer || tasks_path, class: "btn" %>
+
 

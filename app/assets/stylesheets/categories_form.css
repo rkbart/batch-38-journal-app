@@ -23,14 +23,17 @@
   }
 
   .category-form .actions .btn {
-    color: white;
-    background-color: gray;
+    color: whitesmoke;
+    background-color: black;
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
     display: inline-block;
-    margin-top: 1rem;
+    margin-top: 0;
+    margin-left: 0;
     border: none;
+    text-decoration: none;
+    transition: all .3s ease-in-out;
   }
   .category-form .actions .btn:hover {
     background-color: rgb(81, 81, 81);

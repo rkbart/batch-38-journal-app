@@ -22,7 +22,8 @@ class CategoriesController < ApplicationController
       redirect_to @category
       flash[:notice] = "Category created successfully"
     else
-      render :new
+      flash[:alert] = "Unable to save category"
+      render :new, status: :unprocessable_entity
     end
   end
 

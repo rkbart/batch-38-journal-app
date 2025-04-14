@@ -1,19 +1,23 @@
 <div class = "task-show-container">
 	<div class = "task-show-title">
-		<h1>📌<%= @task.description %></h1> 
+		<h1>
+			<i class="fa-solid fa-bookmark"></i>
+			<%= @task.description %>
+		</h1> 
 		<div class = "task-show-actions"> 
-			<%= link_to "📝", edit_category_task_path(@task.category, @task), class: "edit-btn" %>
-		</div>
-		<div class = "task-show-actions"> 	
-			<%= link_to "⛔", category_task_path(@task.category, @task), 
-			data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, 
-			class: "delete-btn" %>
+			<%= link_to edit_category_task_path(@task.category, @task), class: "edit-btn" do %>
+				<i class="fa-solid fa-pen-to-square"></i>
+			<%end%>
 		</div>
 	</div>
 
-	<h2>📆Due Date: <%= @task.due_date %></h2>
-	<h2>🗂️Category: <%= @task.category.name %></h2>
+	<h2><i class="fa-solid fa-calendar-days"></i>&nbsp; <%= @task.due_date %></h2>
+	<h2><i class="fa-solid fa-folder"></i>&nbsp;Category: <%= @task.category.name %></h2>
 
-	<%= link_to '⬅️ View Category', category_path(@task.category), class: "btn" %>
-	<%= link_to '⬅️🏠 Back to Home', categories_path, class: "btn" %>
+	<%= link_to session[:return_to] || category_path(@task.category), class: "btn" do %>
+		<i class="fa-solid fa-arrow-left"></i> &nbsp; Back
+	<%end%>
+	<%= link_to categories_path, class: "btn" do %>
+		<i class="fa-solid fa-house"></i> &nbsp; Back to Home
+	<%end%>
 </div>

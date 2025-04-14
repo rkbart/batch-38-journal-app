@@ -1,36 +1,59 @@
 <div class = "today">
-	<h1>📌 Available Tasks</h1>
-	
-	<h2>Today's Tasks</h2>
+	<h1><i class="fa-solid fa-list-check"></i> Available Tasks</h1>
+
+	<h2 style = "color: red;" >Today's Tasks (<%= @tasks_today.count%>) <i class="fa-solid fa-bell"></i></h2>
 	<% if @tasks_today.any? %>
-			<ul>
+		<ul>
 			<% @tasks_today.each do |task| %>
-					<li>
-					<%= link_to category_task_path(task.category, task) do%>
-							✅ <%= task.description %> (from <%= task.category.name %>)
-					<%end%>
-					</li>
+				<li>
+				<%= link_to category_task_path(task.category, task) do%>
+						<i class="fa-solid fa-square-check"></i> 
+						<%= task.description %> (from <%= task.category.name %>)
+				<%end%>
+				</li>
 			<% end %>
-			</ul>
+		</ul>
 	<% else %>
-			<p>No tasks due today 🎉</p>
+		<p>No tasks due today 🎉</p>
 	<% end %>
 
-	<h2>Upcoming Tasks</h2>
+	<h2 style = "color: green;">Upcoming Tasks (<%= @upcoming_tasks.count%>)</h2>
 	<% if @upcoming_tasks.any? %>
-			<ul>
+		<ul>
 			<% @upcoming_tasks.each do |task| %>
-					<li>
+				<li>
 					<%= link_to category_task_path(task.category, task) do%>
-							✅ <%= task.description %> (from <%= task.category.name %>)
+						<i class="fa-solid fa-square-check"></i> 
+						<%= task.description %> (from <%= task.category.name %>)
 					<%end%>
-					</li>
+				</li>
 			<% end %>
-			</ul>
+		</ul>
 	<% else %>
-			<p>No upcoming tasks 🎉</p>
+		<p>No upcoming tasks 🎉</p>
 	<% end %>
-
-	<%= link_to '📋 Add New Task', new_category_task_path(1), class: "btn" %>
-  <%= link_to '⬅️ Back to Categories', categories_path, class: "btn" %>
+	
+	<h2 style = "color: maroon;">Overdue Tasks (<%= @overdue_tasks.count%>)</h2>
+	<% if @overdue_tasks.any? %>
+		<ul>
+			<% @overdue_tasks.each do |task| %>
+				<li>
+					<%= link_to category_task_path(task.category, task) do%>
+						<i class="fa-solid fa-square-check"></i> 
+						<%= task.description %> (from <%= task.category.name %>)
+					<%end%>
+				</li>
+			<% end %>
+		</ul>
+	<% else %>
+		<p>No upcoming tasks 🎉</p>
+	<% end %>
+	<div class = "tasks-btn">
+		<%= link_to new_category_task_path(1) do %>
+			<i class="fa-solid fa-clipboard-check"></i> &nbsp;Add New Task
+		<% end %>
+		<%= link_to categories_path do %>
+			<i class="fa-solid fa-arrow-left"></i> Back to Categories
+		<% end %>	
+	</div>
 </div>

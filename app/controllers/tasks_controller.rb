@@ -2,11 +2,13 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_category, except: [ :index ]
   before_action :set_task, only: [ :show, :edit, :update, :destroy ]
+  before_action :referer, only: [ :new, :edit, :show ]
 
   def index
     @tasks = current_user.tasks.includes(:category)
     @tasks_today = @tasks.where(due_date: Date.today)
     @upcoming_tasks = @tasks.where("due_date > ?", Date.today)
+    @overdue_tasks = @tasks.where("due_date < ?", Date.today)
   end
   def show; end
 
@@ -18,10 +20,12 @@ class TasksController < ApplicationController
     @task = @category.tasks.new(task_params)
 
     if @task.save
+      session.delete(:return_to) # Clear stored referer
       redirect_to category_task_path(@category, @task)
       flash[:notice] = "Task created successfully"
     else
-      render :new
+      flash[:alert] = "Unable to save task"
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -54,5 +58,9 @@ class TasksController < ApplicationController
 
   def task_params
     params.require(:task).permit(:description, :due_date, :category_id)
+  end
+
+  def referer
+    session[:return_to] = request.referer # Store the original referer
   end
 end

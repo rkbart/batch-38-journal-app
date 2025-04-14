@@ -7,6 +7,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #eeeeef;
 }
 
 .header {
@@ -54,16 +55,17 @@ body {
 .btn {
   margin-left: 10px;
   text-decoration: none;
-  color: white;
-  background-color: gray;
+  color: whitesmoke;
+  background-color: black;
   padding: 6px 12px;
   border-radius: 4px;
   cursor: pointer;
   display: inline-block;
   margin-top: 1rem;
+  transition: all .3s ease-in-out;
 }
 
 .btn:hover {
-  background-color: rgb(81, 81, 81);
+  background-color: hsl(0, 0%, 20%);
 }
 
