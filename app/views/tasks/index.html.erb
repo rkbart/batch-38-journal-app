@@ -1,59 +1,66 @@
-<div class = "today">
-	<h1><i class="fa-solid fa-list-check"></i> Available Tasks</h1>
+<div class="today">
+  <h1><i class="fa-solid fa-list-check"></i> Available Tasks</h1>
 
-	<h2 style = "color: red;" >Today's Tasks (<%= @tasks_today.count%>) <i class="fa-solid fa-bell"></i></h2>
-	<% if @tasks_today.any? %>
-		<ul>
-			<% @tasks_today.each do |task| %>
-				<li>
-				<%= link_to category_task_path(task.category, task) do%>
-						<i class="fa-solid fa-square-check"></i> 
-						<%= task.description %> (from <%= task.category.name %>)
-				<%end%>
-				</li>
-			<% end %>
-		</ul>
-	<% else %>
-		<p>No tasks due today 🎉</p>
-	<% end %>
+  <h2 style="color: red;">Today's Tasks (<%= @tasks_today.count %>) <i class="fa-solid fa-bell"></i></h2>
+  <% if @tasks_today.any? %>
+    <ul>
+      <% @tasks_today.each do |task| %>
+        <li>
+          <%= link_to category_task_path(task.category, task) do %>
+            <i class="fa-solid fa-square-check"></i> 
+            <%= task.description %> (from <%= task.category.name %>)
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No tasks due today 🎉</p>
+  <% end %>
 
-	<h2 style = "color: green;">Upcoming Tasks (<%= @upcoming_tasks.count%>)</h2>
-	<% if @upcoming_tasks.any? %>
-		<ul>
-			<% @upcoming_tasks.each do |task| %>
-				<li>
-					<%= link_to category_task_path(task.category, task) do%>
-						<i class="fa-solid fa-square-check"></i> 
-						<%= task.description %> (from <%= task.category.name %>)
-					<%end%>
-				</li>
-			<% end %>
-		</ul>
-	<% else %>
-		<p>No upcoming tasks 🎉</p>
-	<% end %>
-	
-	<h2 style = "color: maroon;">Overdue Tasks (<%= @overdue_tasks.count%>)</h2>
-	<% if @overdue_tasks.any? %>
-		<ul>
-			<% @overdue_tasks.each do |task| %>
-				<li>
-					<%= link_to category_task_path(task.category, task) do%>
-						<i class="fa-solid fa-square-check"></i> 
-						<%= task.description %> (from <%= task.category.name %>)
-					<%end%>
-				</li>
-			<% end %>
-		</ul>
-	<% else %>
-		<p>No upcoming tasks 🎉</p>
-	<% end %>
-	<div class = "tasks-btn">
-		<%= link_to new_category_task_path(1) do %>
-			<i class="fa-solid fa-clipboard-check"></i> &nbsp;Add New Task
-		<% end %>
-		<%= link_to categories_path do %>
-			<i class="fa-solid fa-arrow-left"></i> Back to Categories
-		<% end %>	
-	</div>
+  <h2 style="color: green;">Upcoming Tasks (<%= @upcoming_tasks.count %>)</h2>
+  <% if @upcoming_tasks.any? %>
+    <ul>
+      <% @upcoming_tasks.each do |task| %>
+        <li>
+          <%= link_to category_task_path(task.category, task) do %>
+            <i class="fa-solid fa-square-check"></i> 
+            <%= task.description %> (from <%= task.category.name %>)
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No upcoming tasks 🎉</p>
+  <% end %>
+
+  <h2 style="color: maroon;">Overdue Tasks (<%= @overdue_tasks.count %>)</h2>
+  <% if @overdue_tasks.any? %>
+    <ul>
+      <% @overdue_tasks.each do |task| %>
+        <li>
+          <%= link_to category_task_path(task.category, task) do %>
+            <i class="fa-solid fa-square-check"></i> 
+            <%= task.description %> (from <%= task.category.name %>)
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No overdue tasks 🎉</p>
+  <% end %>
+
+  <div class="tasks-btn">
+    <% category = current_user.categories.find_by(name: "Uncategorized") || current_user.categories.first %>
+    <% if category %>
+      <%= link_to new_category_task_path(category) do %>
+        <i class="fa-solid fa-clipboard-check"></i> &nbsp;Add New Task
+      <% end %>
+    <% else %>
+      <p>No available categories to add a task.</p>
+    <% end %>
+
+    <%= link_to categories_path do %>
+      <i class="fa-solid fa-arrow-left"></i> Back to Categories
+    <% end %>  
+  </div>
 </div>

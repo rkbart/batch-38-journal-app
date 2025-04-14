@@ -1,5 +1,10 @@
 <div class = "categories-show-container">
-  <h1><%= @category.name %> <i class="fa-solid fa-folder-open"></i></h1>
+  <div style = "display: flex; justify-content: space-between;">
+    <h1><%= @category.name %> <i class="fa-solid fa-folder-open"></i></h1>
+    <h1><%= link_to edit_category_path, title: "Edit Category Details", class: "edit-icon" do %>
+      <i class="fa-solid fa-pen-to-square" style = "color: black" ></i>
+    <% end %></h1>
+  </div>
   
   <div class = "categories-show-tasks-container">
     <div class = "tasks-title">

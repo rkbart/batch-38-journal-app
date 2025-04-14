@@ -13,7 +13,7 @@
           <i class="fa-solid fa-folder"></i> 
           <%= link_to category.name, category %> (<%= category.tasks.count %>)
         </h2>
-        <%= link_to edit_category_path(category), class: "edit-icon" do %>
+        <%= link_to edit_category_path(category), title: "Edit Category Details", class: "edit-icon" do %>
           <i class="fa-solid fa-pen-to-square"></i>
         <% end %>
       </div>

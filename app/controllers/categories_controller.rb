@@ -4,7 +4,6 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = current_user.categories
-    # @todays_tasks = current_user.tasks.where(due_date: Date.today)
   end
 
   def show
