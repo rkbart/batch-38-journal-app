@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_category, only: [ :show, :edit, :update, :destroy ]
+  # rescue_from ActiveRecord::RecordNotFound, with: :category_not_found
 
   def index
     @categories = current_user.categories
@@ -18,8 +19,7 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.build(category_params)
 
     if @category.save
-      redirect_to @category
-      flash[:notice] = "Category created successfully"
+      redirect_to @category, notice: "Category created successfully"
     else
       flash[:alert] = "Unable to save category"
       render :new, status: :unprocessable_entity
@@ -30,8 +30,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to @category
-      flash[:notice] = "Category updated successfully"
+      redirect_to @category, notice: "Category updated successfully"
     else
       flash[:alert] = "Unable to save category"
       render :edit, status: :unprocessable_entity
@@ -40,8 +39,7 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category.destroy
-    redirect_to categories_path
-    flash[:notice] = "Category deleted successfully"
+    redirect_to categories_path, notice: "Category deleted successfully"
   end
 
   private
@@ -53,4 +51,8 @@ class CategoriesController < ApplicationController
   def set_category
     @category = current_user.categories.find(params[:id])
   end
+
+  # def category_not_found
+  #   redirect_to categories_path, alert: "Category not found."
+  # end
 end

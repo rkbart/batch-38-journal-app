@@ -1,7 +1,7 @@
 <div class="categories-index-container"> 
   <div class="categories-title">
     <h1>Categories <i class="fa-solid fa-briefcase"></i></h1>
-    <%= link_to tasks_path, class: "view-all btn" do %>
+    <%= link_to tasks_path, class: "view-all btn" do %> <!-- view task today -->
       <i class="fa-solid fa-list-check"></i> View All Tasks
     <% end %>
   </div>
@@ -11,9 +11,9 @@
       <div class="categories-container">
         <h2>
           <i class="fa-solid fa-folder"></i> 
-          <%= link_to category.name, category %> (<%= category.tasks.count %>)
+          <%= link_to category.name, category %> (<%= category.tasks.count %>) <!-- show category -->
         </h2>
-        <%= link_to edit_category_path(category), title: "Edit Category Details", class: "edit-icon" do %>
+        <%= link_to edit_category_path(category), title: "Edit Category Details", class: "edit-icon" do %> <!-- edit -->
           <i class="fa-solid fa-pen-to-square"></i>
         <% end %>
       </div>
@@ -23,7 +23,7 @@
   <% end %>
 
   <%= link_to new_category_path, title: "Add Category", class: "new-category" do %>
-    <span>
+    <span> 
       <i class="fa-solid fa-folder-plus"></i> &nbsp;Create a Category
     </span>
   <% end %>

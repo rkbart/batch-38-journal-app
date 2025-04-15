@@ -1,8 +1,10 @@
 class TasksController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user! # must be logged-in before going anywhere
   before_action :set_category, except: [ :index ]
   before_action :set_task, only: [ :show, :edit, :update, :destroy ]
   before_action :referer, only: [ :new, :edit, :show ]
+
+  # rescue_from ActiveRecord::RecordNotFound, with: :task_not_found
 
   def index
     @tasks = current_user.tasks.includes(:category)
@@ -21,8 +23,7 @@ class TasksController < ApplicationController
 
     if @task.save
       session.delete(:return_to) # Clear stored referer
-      redirect_to category_task_path(@category, @task)
-      flash[:notice] = "Task created successfully"
+      redirect_to category_task_path(@category, @task), notice: "Task created successfully"
     else
       flash[:alert] = "Unable to save task"
       render :new, status: :unprocessable_entity
@@ -33,8 +34,7 @@ class TasksController < ApplicationController
 
   def update
     if @task.update(task_params)
-      redirect_to category_path(@task.category)
-      flash[:notice] = "Task updated successfully"
+      redirect_to category_path(@task.category), notice: "Task updated successfully"
     else
       flash[:alert] = "Unable to save task"
       render :edit, status: :unprocessable_entity
@@ -43,8 +43,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    redirect_to category_path(@task.category)
-    flash[:notice] = "Task deleted successfully"
+    redirect_to category_path(@task.category), notice: "Task deleted successfully"
   end
 
   private
@@ -64,4 +63,8 @@ class TasksController < ApplicationController
   def referer
     session[:return_to] = request.referer # Store the original referer
   end
+
+  # def task_not_found
+  #   redirect_to categories_path, alert: "Task not found."
+  # end
 end

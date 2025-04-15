@@ -146,3 +146,14 @@ body {
     padding: 0.5rem 1rem;
   }
 }
+
+.user-email-label, .user-password-label {
+  display: flex; 
+  justify-content: flex-start; 
+  align-items: center; 
+  gap: 8px;
+}
+
+.user-email-label i, .user-password-label i {
+  margin-top: -6px;
+}

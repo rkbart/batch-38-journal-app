@@ -1,4 +1,4 @@
-<%= form_with(model: [ @category, @task ], local: true, html: { class: "category-form" }) do |form| %>
+<%= form_with(model: [ @category, task ], local: true, html: { class: "category-form" }) do |form| %>
   <div class="field">
     <%= form.label :description, class: "form-label" %>
     <%= form.text_field :description, class: "form-input" %>

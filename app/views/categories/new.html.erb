@@ -10,7 +10,9 @@
         </ul>
       </div>
     <% end %>
-  <%= render "form", category: @category %>
+  
+  <%= render "form", category: @category %> <!-- show form -->
+  
   <%= link_to categories_path, class: "btn" do %>
     <i class="fa-solid fa-arrow-left"></i> &nbsp; Back
   <%end%>
