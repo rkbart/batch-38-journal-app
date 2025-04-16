@@ -3,8 +3,9 @@ class ApplicationController < ActionController::Base
   allow_browser versions: :modern
   before_action :authenticate_user!
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-  
+
   private
+
   def record_not_found
     redirect_to categories_path, alert: "Record not found."
   end

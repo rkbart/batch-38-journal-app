@@ -1,11 +1,7 @@
 class TasksController < ApplicationController
-  # before_action :authenticate_user! # must be logged-in before going anywhere
   before_action :set_category, except: [ :index ]
   before_action :set_task, only: [ :show, :edit, :update, :destroy ]
   before_action :referer, only: [ :new, :edit, :show ]
-
-  # rescue_from ActiveRecord::RecordNotFound, with: :task_not_found
-
   def index
     @tasks = current_user.tasks.includes(:category)
     @tasks_today = @tasks.where(due_date: Date.today)
@@ -63,8 +59,4 @@ class TasksController < ApplicationController
   def referer
     session[:return_to] = request.referer # Store the original referer
   end
-
-  # def task_not_found
-  #   redirect_to categories_path, alert: "Task not found."
-  # end
 end

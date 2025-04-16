@@ -1,8 +1,5 @@
 class CategoriesController < ApplicationController
-  # before_action :authenticate_user!
   before_action :set_category, only: [ :show, :edit, :update, :destroy ]
-  # rescue_from ActiveRecord::RecordNotFound, with: :category_not_found
-
   def index
     @categories = current_user.categories
   end
@@ -51,8 +48,4 @@ class CategoriesController < ApplicationController
   def set_category
     @category = current_user.categories.find(params[:id])
   end
-
-  # def category_not_found
-  #   redirect_to categories_path, alert: "Category not found."
-  # end
 end
