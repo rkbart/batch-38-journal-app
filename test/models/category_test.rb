@@ -2,32 +2,48 @@ require "test_helper"
 
 class CategoryTest < ActiveSupport::TestCase
   def setup
-    @user = users(:one)
-    @category = @user.categories.build(name: "Work")
+    @user = User.create(email: "test@example.com", password: "password123", password_confirmation: "password123")
+    @category = Category.new(name: "Work", user: @user)
+  end
+
+  test "should be valid with valid attributes" do
+    assert @category.valid? # runs validation
   end
 
   test "name should be present" do
     @category.name = ""
+    assert_not @category.valid? # assert_not checks if invalid
+  end
+
+  test "name should be at least 2 characters" do
+    @category.name = "A"
+    assert_not @category.valid?
+  end
+
+  test "name should not be longer than 30 characters" do
+    @category.name = "A" * 31
     assert_not @category.valid?
   end
 
   test "name should be unique per user" do
-    duplicate_category = @user.categories.build(name: categories(:one).name)
-    assert_not duplicate_category.valid?
+    @category.save
+    duplicate = Category.new(name: "Work", user: @user)
+    assert_not duplicate.valid?
   end
 
-  test "name should have a length between 2 and 30 characters" do
-    @category.name = "A"
-    assert_not @category.valid?
-
-    @category.name = "A" * 31
-    assert_not @category.valid?
-
-    @category.name = "Work"
-    assert @category.valid?
+  test "should belong to user" do
+    assert_respond_to @category, :user # checks if category belongs to user
   end
 
-  test "should belong to a user" do
-    assert_equal @user, @category.user
+  test "should have many tasks" do
+    assert_respond_to @category, :tasks
+  end
+
+  test "should destroy associated tasks when destroyed" do
+    @category.save
+    @category.tasks.create(description: "Sample task")
+    assert_difference("Task.count", -1) do # checks if task counts decreases by 1 if @category is deleted
+      @category.destroy
+    end
   end
 end
