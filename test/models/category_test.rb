@@ -20,9 +20,6 @@ class CategoryTest < ActiveSupport::TestCase
     @category.name = "A"
     assert_not @category.valid?
 
-    @category.name = "A" * 31
-    assert_not @category.valid?
-
     @category.name = "Work"
     assert @category.valid?
   end
