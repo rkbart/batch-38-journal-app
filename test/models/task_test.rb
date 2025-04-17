@@ -2,9 +2,9 @@ require "test_helper"
 
 class TaskTest < ActiveSupport::TestCase
   def setup
-    @user = User.create(email: "test@example.com", password: "password123", password_confirmation: "password123")
-    @category = Category.create(name: "Home", user: @user)
-    @task = Task.new(description: "Clean room", category: @category)
+    @user = users(:one)
+    @category = categories(:one)
+    @task = tasks(:one)
   end
 
   test "should be valid with valid attributes" do
@@ -32,7 +32,7 @@ class TaskTest < ActiveSupport::TestCase
 
   test "should set default due_date if not provided" do
     @task.due_date = nil
-    @task.valid?  # triggers before_validation
+    @task.valid?
     assert_equal Date.today, @task.due_date
   end
 

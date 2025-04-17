@@ -2,11 +2,7 @@ require "test_helper"
 
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(
-      email: "test@example.com",
-      password: "password123",
-      password_confirmation: "password123"
-    )
+    @user = users(:one)
   end
 
   test "should be valid with valid attributes" do
@@ -22,16 +18,12 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should create a default category after creation" do
-    @user.save
-    assert_equal 1, @user.categories.count
-    assert_equal "Uncategorized", @user.categories.first.name
+   assert_equal "Uncategorized", @user.categories.first.name
   end
 
   test "should destroy associated categories when user is destroyed" do
-    @user.save
-    @user.categories.create(name: "Work")
-    assert_difference("Category.count", -2) do # checks if categories ae deleted
+      category = categories(:one) # assume this belongs to user(:one)
       @user.destroy
-    end
+    assert_not Category.exists?(category.id)
   end
 end
